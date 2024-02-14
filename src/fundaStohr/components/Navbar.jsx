@@ -1,13 +1,7 @@
 import {
-  ContactEmergency,
-  LogoutOutlined,
-  MenuOutlined,
-} from "@mui/icons-material";
-import {
   AppBar,
   Button,
   Grid,
-  IconButton,
   Link,
   Stack,
   Toolbar,
@@ -15,7 +9,6 @@ import {
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import React from "react";
-import { Navigate } from "react-router-dom";
 
 export const Navbar = ({ drawerWith = 240 }) => {
   return (
@@ -26,22 +19,22 @@ export const Navbar = ({ drawerWith = 240 }) => {
       }}
     >
       <Toolbar>
-        <IconButton
-          color="inherit"
-          edge="start"
-          sx={{ mr: 2, display: { sm: "none" } }}
-        >
-          <MenuOutlined />
-        </IconButton>
         <Grid
           container
           direction="row"
           justifyContent="space-between"
           alignItems="center"
         >
-          <Typography variant="h6" noWrap component="div">
-            FundaStohrApp
-          </Typography>
+          <Link
+            component={RouterLink}
+            color="inherit"
+            to="/inicio"
+            underline="none"
+          >
+            <Typography variant="h6" noWrap component="div">
+              FundaStohrApp
+            </Typography>
+          </Link>
 
           <Stack direction={"row"} gap={0.5}>
             {/* <Button variant="p" component="div" to="/la-fundacion">
@@ -59,16 +52,44 @@ export const Navbar = ({ drawerWith = 240 }) => {
               </Link>
             </Button>
             <Button variant="p" component="div">
-              Concursos
+              <Link
+                component={RouterLink}
+                color="inherit"
+                to="/concursos"
+                underline="none"
+              >
+                Concursos
+              </Link>
             </Button>
             <Button variant="p" component="div">
-              Exposiciones
+              <Link
+                component={RouterLink}
+                color="inherit"
+                to="/exposiciones"
+                underline="none"
+              >
+                Exposiciones
+              </Link>
             </Button>
             <Button variant="p" component="div">
-              Dibujando en Armonía
+              <Link
+                component={RouterLink}
+                color="inherit"
+                to="/dibujando-en-armonia"
+                underline="none"
+              >
+                Dibujando en Armonía
+              </Link>
             </Button>
             <Button variant="p" component="div">
-              Apóyanos
+              <Link
+                component={RouterLink}
+                color="inherit"
+                to="/apoyanos"
+                underline="none"
+              >
+                Apóyanos
+              </Link>
             </Button>
             <Button variant="p" component="div">
               <Link
