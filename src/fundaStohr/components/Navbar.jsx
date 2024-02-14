@@ -4,10 +4,11 @@ import {
   Grid,
   Link,
   Stack,
+  Tabs,
   Toolbar,
   Typography,
 } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { NavLink as RouterLink } from "react-router-dom";
 import React from "react";
 
 export const Navbar = ({ drawerWith = 240 }) => {
@@ -47,6 +48,7 @@ export const Navbar = ({ drawerWith = 240 }) => {
                 color="inherit"
                 to="/la-fundacion"
                 underline="none"
+                sx={{ "&.active": { borderBottom: 3, borderColor: "white" } }}
               >
                 La Fundación
               </Link>
@@ -57,6 +59,7 @@ export const Navbar = ({ drawerWith = 240 }) => {
                 color="inherit"
                 to="/concursos"
                 underline="none"
+                sx={{ "&.active": { borderBottom: 3, borderColor: "white" } }}
               >
                 Concursos
               </Link>
@@ -67,6 +70,7 @@ export const Navbar = ({ drawerWith = 240 }) => {
                 color="inherit"
                 to="/exposiciones"
                 underline="none"
+                sx={{ "&.active": { borderBottom: 3, borderColor: "white" } }}
               >
                 Exposiciones
               </Link>
@@ -77,6 +81,7 @@ export const Navbar = ({ drawerWith = 240 }) => {
                 color="inherit"
                 to="/dibujando-en-armonia"
                 underline="none"
+                sx={{ "&.active": { borderBottom: 3, borderColor: "white" } }}
               >
                 Dibujando en Armonía
               </Link>
@@ -87,6 +92,7 @@ export const Navbar = ({ drawerWith = 240 }) => {
                 color="inherit"
                 to="/apoyanos"
                 underline="none"
+                sx={{ "&.active": { borderBottom: 3, borderColor: "white" } }}
               >
                 Apóyanos
               </Link>
@@ -97,6 +103,7 @@ export const Navbar = ({ drawerWith = 240 }) => {
                 color="inherit"
                 to="/contacto"
                 underline="none"
+                sx={{ "&.active": { borderBottom: 3, borderColor: "white" } }}
               >
                 Contacto
               </Link>
