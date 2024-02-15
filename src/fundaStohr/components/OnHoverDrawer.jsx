@@ -4,31 +4,53 @@ import {
   Drawer,
   Grid,
   List,
-  ListItem,
   ListItemText,
+  Toolbar,
 } from "@mui/material";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { closeDrawer } from "../../store/slices/drawerSlice";
 
 export const OnHoverDrawer = () => {
+  const { toggle } = useSelector((state) => state.drawer);
+  const dispatch = useDispatch();
+
   return (
-    <>
-      <Button>
-        <Drawer anchor="top">
-          <Grid
-            container
-            rowSpacing={1}
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-          >
-            <List>
-              <ListItemText primary={"Prueba"} />
-              <Divider />
-              <ListItemText primary={"Prueba"} />
-              <ListItemText primary={"Prueba"} />
-              <ListItemText primary={"Prueba"} />
-            </List>
-          </Grid>
-        </Drawer>
-      </Button>
-    </>
+    <Drawer
+      component="div"
+      ModalProps={{
+        slots: { backdrop: "div" },
+        slotProps: {
+          root: {
+            style: {
+              position: "absolute",
+              top: "unset",
+              bottom: "unset",
+              left: "unset",
+              right: "unset",
+            },
+          },
+        },
+      }}
+      PaperProps={{
+        sx: {
+          width: "100%",
+          marginTop: 8,
+          textAlign: "left",
+        },
+      }}
+      anchor="top"
+      open={toggle}
+    >
+      <div onMouseLeave={() => dispatch(closeDrawer())}>
+        <List sx={{ marginLeft: 2 }}>
+          <ListItemText primary={"Prueba"} />
+          <Divider />
+          <ListItemText primary={"Prueba"} />
+          <ListItemText primary={"Prueba"} />
+          <ListItemText primary={"Prueba"} />
+        </List>
+      </div>
+    </Drawer>
   );
 };

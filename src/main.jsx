@@ -3,11 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { StohrApp } from "./StohrApp";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <StohrApp />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <StohrApp />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
