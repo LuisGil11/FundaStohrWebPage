@@ -4,7 +4,6 @@ import {
   Grid,
   Link,
   Stack,
-  Tabs,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -103,7 +102,12 @@ export const Navbar = ({ drawerWith = 240 }) => {
                 color="inherit"
                 to="/contacto"
                 underline="none"
-                sx={{ "&.active": { borderBottom: 3, borderColor: "white" } }}
+                sx={{
+                  "&.active": {
+                    borderBottom: 3,
+                    borderColor: "white",
+                  },
+                }}
               >
                 Contacto
               </Link>
