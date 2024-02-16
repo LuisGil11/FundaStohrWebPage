@@ -4,16 +4,32 @@ import {
   Drawer,
   Grid,
   List,
+  ListItem,
   ListItemText,
   Toolbar,
+  Typography,
 } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeDrawer } from "../../store/slices/drawerSlice";
+import { NavLink } from "react-router-dom";
+
+export const DrawerItem = ({ page, father, total, index }) => {
+  return (
+    <ListItem key={page}>
+      <NavLink to={`/${father}/${page}`}>
+        <Typography>{page}</Typography>
+      </NavLink>
+      {index !== total - 1 && <Divider />}
+    </ListItem>
+  );
+};
 
 export const OnHoverDrawer = () => {
-  const { toggle } = useSelector((state) => state.drawer);
+  const { toggle, father, pages = [] } = useSelector((state) => state.drawer);
   const dispatch = useDispatch();
+  console.log(pages);
+  console.log(pages[0]);
 
   return (
     <Drawer
@@ -44,11 +60,14 @@ export const OnHoverDrawer = () => {
     >
       <div onMouseLeave={() => dispatch(closeDrawer())}>
         <List sx={{ marginLeft: 2 }}>
-          <ListItemText primary={"Prueba"} />
-          <Divider />
-          <ListItemText primary={"Prueba"} />
-          <ListItemText primary={"Prueba"} />
-          <ListItemText primary={"Prueba"} />
+          {pages.map((page, i) => (
+            <DrawerItem
+              page={page}
+              total={pages.length}
+              index={i}
+              father={father}
+            />
+          ))}
         </List>
       </div>
     </Drawer>

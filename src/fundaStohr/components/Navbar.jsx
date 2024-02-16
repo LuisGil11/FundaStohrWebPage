@@ -49,7 +49,14 @@ export const Navbar = ({ drawerWith = 240 }) => {
               <Button
                 variant="p"
                 component="div"
-                onMouseOver={() => dispatch(openDrawer())}
+                onMouseOver={() =>
+                  dispatch(
+                    openDrawer({
+                      pages: [1.1, 2.1, 3.1, 4.1],
+                      father: "la-fundacion",
+                    })
+                  )
+                }
               >
                 <Link
                   component={RouterLink}
@@ -59,12 +66,23 @@ export const Navbar = ({ drawerWith = 240 }) => {
                   sx={{
                     "&.active": { borderBottom: 3, borderColor: "white" },
                   }}
-                  on
                 >
                   La Fundación
                 </Link>
               </Button>
-              <Button variant="p" component="div">
+              <Button
+                variant="p"
+                component="div"
+                onMouseOver={() =>
+                  dispatch(
+                    openDrawer({
+                      pages: [1.1, 2.1, 3.1, 4.1],
+                      father: "concursos",
+                    })
+                  )
+                }
+                onClick={() => dispatch(closeDrawer())}
+              >
                 <Link
                   component={RouterLink}
                   color="inherit"
