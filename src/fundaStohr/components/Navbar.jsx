@@ -6,9 +6,10 @@ import {
   Stack,
   Toolbar,
   Typography,
+  keyframes,
 } from "@mui/material";
 import { NavLink as RouterLink } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { closeDrawer, openDrawer } from "../../store/slices/drawerSlice";
 
@@ -36,7 +37,12 @@ export const Navbar = ({ drawerWith = 240 }) => {
               to="/inicio"
               underline="none"
             >
-              <Typography variant="h6" noWrap component="div">
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                // sx={{ "&:hover": { color: "red" } }}
+              >
                 FundaStohrApp
               </Typography>
             </Link>
@@ -52,7 +58,7 @@ export const Navbar = ({ drawerWith = 240 }) => {
                 onMouseOver={() =>
                   dispatch(
                     openDrawer({
-                      pages: [1.1, 2.1, 3.1, 4.1],
+                      pages: [1, 2, 3, 4],
                       father: "la-fundacion",
                     })
                   )

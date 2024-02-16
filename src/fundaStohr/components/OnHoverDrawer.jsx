@@ -1,13 +1,12 @@
 import {
-  Button,
   Divider,
   Drawer,
-  Grid,
+  Fade,
   List,
   ListItem,
-  ListItemText,
-  Toolbar,
   Typography,
+  keyframes,
+  styled,
 } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,8 +27,19 @@ export const DrawerItem = ({ page, father, total, index }) => {
 export const OnHoverDrawer = () => {
   const { toggle, father, pages = [] } = useSelector((state) => state.drawer);
   const dispatch = useDispatch();
-  console.log(pages);
-  console.log(pages[0]);
+
+  const fadeInFwd = keyframes`
+  0% {
+    -webkit-transform: translateZ(-80px);
+            transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+`;
 
   return (
     <Drawer
@@ -53,6 +63,7 @@ export const OnHoverDrawer = () => {
           width: "100%",
           marginTop: 8,
           textAlign: "left",
+          animation: `${fadeInFwd} 1s`,
         },
       }}
       anchor="top"
@@ -62,6 +73,7 @@ export const OnHoverDrawer = () => {
         <List sx={{ marginLeft: 2 }}>
           {pages.map((page, i) => (
             <DrawerItem
+              key={page}
               page={page}
               total={pages.length}
               index={i}

@@ -1,6 +1,5 @@
 import { createTheme } from "@mui/material";
 import { red } from "@mui/material/colors";
-import { useDispatch } from "react-redux";
 
 export const mainTheme = createTheme({
   palette: {
