@@ -1,8 +1,8 @@
 import { AppBar, Grid, Link, Stack, Toolbar, Typography } from "@mui/material";
 import { NavLink as RouterLink } from "react-router-dom";
 import React from "react";
-import { pagesInfo } from "../pages/pagesInfo";
 import { NavbarElement } from "./NavbarElement";
+import { pagesInfo } from "../utilities/pagesInfo";
 
 export const Navbar = () => {
   const navBarHeight = 60;

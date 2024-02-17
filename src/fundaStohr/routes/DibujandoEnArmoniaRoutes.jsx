@@ -1,7 +1,7 @@
 import React from "react";
-import { DibujandoEnArmonia } from "../DibujandoEnArmonia";
-import { Talleres } from "../Talleres";
-import { EncuentrosAlAire } from "../EncuentrosAlAire";
+import { DibujandoEnArmonia } from "../pages/dibujandoEnArmonia/DibujandoEnArmonia";
+import { Talleres } from "../pages/dibujandoEnArmonia/Talleres";
+import { EncuentrosAlAire } from "../pages/dibujandoEnArmonia/EncuentrosAlAire";
 import { Route, Routes } from "react-router-dom";
 
 export const DibujandoEnArmoniaRoutes = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Exposiciones } from "../Exposiciones";
+import { Exposiciones } from "../pages/exposiciones/Exposiciones";
 import { Route, Routes } from "react-router-dom";
 
 export const ExposicionesRoutes = () => {

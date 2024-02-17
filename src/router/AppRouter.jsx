@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { FundaStohrRouter } from "../fundaStohr/routes/FundaStohrRoutes";
+import { FundaStohrRouter } from "./FundaStohrRoutes";
 
 export const AppRouter = () => {
   return (

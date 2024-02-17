@@ -1,10 +1,10 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { AlgunasObras } from "../AlgunasObras";
-import { ArteYEstilo } from "../ArteYEstilo";
-import { BioCarlosStohr } from "../BioCarlosStohr";
-import { LaFundacion } from "../LaFundacion";
-import { Libros } from "../Libros";
+import { AlgunasObras } from "../pages/laFundacion/AlgunasObras";
+import { ArteYEstilo } from "../pages/laFundacion/ArteYEstilo";
+import { BioCarlosStohr } from "../pages/laFundacion/BioCarlosStohr";
+import { LaFundacion } from "../pages/laFundacion/LaFundacion";
+import { Libros } from "../pages/laFundacion/Libros";
 
 export const LaFundacionRoutes = () => {
   return (
