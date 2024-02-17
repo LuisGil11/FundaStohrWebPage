@@ -1,19 +1,17 @@
-import { Box, Toolbar } from "@mui/material";
+import { Box, Container, Toolbar } from "@mui/material";
 import { Navbar } from "../components";
 import { OnHoverDrawer } from "../components/OnHoverDrawer";
-
-const drawerWidth = 240;
 
 export const FundaStohrLayout = ({ children }) => {
   return (
     <Box sx={{ display: "flex" }}>
-      <Navbar drawerWidth={drawerWidth} />
+      <Navbar />
       <OnHoverDrawer />
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Container component="main" sx={{ pt: 3 }}>
         <Toolbar />
         {children}
-      </Box>
+      </Container>
     </Box>
   );
 };

@@ -107,6 +107,7 @@ export const OnHoverDrawer = () => {
         <List
           sx={{
             marginLeft: 2,
+            animation: `${fadeInFwd} 0.5 both`,
           }}
         >
           {pages.map((page, i) => (

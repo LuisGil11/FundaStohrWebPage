@@ -1,5 +1,20 @@
+import { Box, Button, Container } from "@mui/material";
+import { blue } from "@mui/material/colors";
 import React from "react";
 
 export const LaFundacion = () => {
-  return <div>LaFundacion</div>;
+  return (
+    <Button
+      sx={{
+        alignContent: "center",
+        backgroundColor: {
+          xs: "red",
+          md: "green",
+          lg: "blue",
+        },
+      }}
+    >
+      CLick
+    </Button>
+  );
 };

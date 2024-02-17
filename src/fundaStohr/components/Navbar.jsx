@@ -13,19 +13,22 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { closeDrawer, openDrawer } from "../../store/slices/drawerSlice";
 
-export const Navbar = ({ drawerWith = 240 }) => {
+export const Navbar = () => {
   const dispatch = useDispatch();
+
+  const handleCloseDrawer = () => {
+    dispatch(setClosing(true));
+    dispatch(closeDrawer());
+  };
+
+  const navBarHeight = 60;
 
   return (
     <>
-      <AppBar
-        position="fixed"
-        sx={{
-          ml: { sm: `${drawerWith}px` },
-        }}
-      >
-        <Toolbar>
+      <AppBar position="fixed">
+        <Toolbar sx={{ height: navBarHeight }}>
           <Grid
+            sx={{ height: "100%" }}
             container
             direction="row"
             justifyContent="space-between"
@@ -47,7 +50,11 @@ export const Navbar = ({ drawerWith = 240 }) => {
               </Typography>
             </Link>
 
-            <Stack direction={"row"} gap={0.5}>
+            <Stack
+              direction={"row"}
+              gap={0.5}
+              sx={{ height: navBarHeight + 1 }}
+            >
               {/* <Button variant="p" component="div" to="/la-fundacion">
               La Fundación
             </Button> */}
@@ -58,7 +65,7 @@ export const Navbar = ({ drawerWith = 240 }) => {
                 onMouseOver={() =>
                   dispatch(
                     openDrawer({
-                      pages: [1, 2, 3, 4],
+                      pages: [1, 2],
                       father: "la-fundacion",
                     })
                   )
@@ -87,7 +94,7 @@ export const Navbar = ({ drawerWith = 240 }) => {
                     })
                   )
                 }
-                onClick={() => dispatch(closeDrawer())}
+                onClick={() => handleCloseDrawer()}
               >
                 <Link
                   component={RouterLink}
