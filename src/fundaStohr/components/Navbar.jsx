@@ -11,14 +11,21 @@ import {
 import { NavLink as RouterLink } from "react-router-dom";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { closeDrawer, openDrawer } from "../../store/slices/drawerSlice";
+import {
+  closeDrawer,
+  openDrawer,
+  setClosing,
+} from "../../store/slices/drawerSlice";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
 
-  const handleCloseDrawer = () => {
+  const handleOnMouseLeave = () => {
+    console.log("se llamo el mouseLeave desde el navbar");
     dispatch(setClosing(true));
-    dispatch(closeDrawer());
+    setTimeout(() => {
+      dispatch(closeDrawer());
+    }, 500);
   };
 
   const navBarHeight = 60;
@@ -62,6 +69,7 @@ export const Navbar = () => {
               <Button
                 variant="p"
                 component="div"
+                onMouseLeave={() => handleOnMouseLeave()}
                 onMouseOver={() =>
                   dispatch(
                     openDrawer({
@@ -86,6 +94,7 @@ export const Navbar = () => {
               <Button
                 variant="p"
                 component="div"
+                onMouseLeave={() => handleOnMouseLeave()}
                 onMouseOver={() =>
                   dispatch(
                     openDrawer({
@@ -94,7 +103,7 @@ export const Navbar = () => {
                     })
                   )
                 }
-                onClick={() => handleCloseDrawer()}
+                onClick={() => handleOnMouseLeave()}
               >
                 <Link
                   component={RouterLink}
