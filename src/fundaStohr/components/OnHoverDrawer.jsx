@@ -16,7 +16,11 @@ import { fadeInFwd, fadeOutBck } from "./animations/drawerAnimations";
 export const DrawerItem = ({ page, father, total, index }) => {
   return (
     <ListItem key={page}>
-      <Link component={NavLink} to={`/${father}/${page}`} underline="none">
+      <Link
+        component={NavLink}
+        to={`${father}/${page.replaceAll(" ", "-").toLowerCase().trim()}`}
+        underline="none"
+      >
         <Typography>{page}</Typography>
       </Link>
       {index !== total - 1 && <Divider />}

@@ -9,12 +9,13 @@ import {
   DibujandoEnArmonia,
   Apoyanos,
 } from "../pages/";
+import { LaFundacionRoutes } from "../pages/laFundacion/routes/LaFundacionRoutes";
 
 export const FundaStohrRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<InicioPage />} />
-      <Route path="/la-fundacion" element={<LaFundacion />} />
+      <Route path="/la-fundacion/*" element={<LaFundacionRoutes />} />
       <Route path="/concursos" element={<Concursos />} />
       <Route path="/exposiciones" element={<Exposiciones />} />
       <Route path="/dibujando-en-armonia" element={<DibujandoEnArmonia />} />

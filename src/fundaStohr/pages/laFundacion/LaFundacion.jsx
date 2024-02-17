@@ -1,5 +1,4 @@
-import { Box, Button, Container } from "@mui/material";
-import { blue } from "@mui/material/colors";
+import { Button } from "@mui/material";
 import React from "react";
 
 export const LaFundacion = () => {
