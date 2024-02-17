@@ -1,22 +1,24 @@
 import {
+  Box,
   Divider,
   Drawer,
+  Link,
   List,
   ListItem,
   Typography,
-  keyframes,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeDrawer, setClosing } from "../../store/slices/drawerSlice";
 import { NavLink } from "react-router-dom";
+import { fadeInFwd, fadeOutBck } from "./animations/drawerAnimations";
 
 export const DrawerItem = ({ page, father, total, index }) => {
   return (
     <ListItem key={page}>
-      <NavLink to={`/${father}/${page}`}>
+      <Link component={NavLink} to={`/${father}/${page}`} underline="none">
         <Typography>{page}</Typography>
-      </NavLink>
+      </Link>
       {index !== total - 1 && <Divider />}
     </ListItem>
   );
@@ -28,6 +30,7 @@ export const OnHoverDrawer = () => {
     father,
     pages = [],
     closing,
+    title,
   } = useSelector((state) => state.drawer);
   const dispatch = useDispatch();
 
@@ -43,31 +46,6 @@ export const OnHoverDrawer = () => {
       dispatch(setClosing(false));
     }
   }, [toggle]);
-
-  const fadeInFwd = keyframes`
-  0% {
-    -webkit-transform: translateZ(-80px);
-            transform: translateZ(-80px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
-  }
-`;
-  const fadeOutBck = keyframes`
-  0% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: translateZ(-80px);
-            transform: translateZ(-80px);
-    opacity: 0;
-  }
-`;
 
   return (
     <Drawer
@@ -110,6 +88,8 @@ export const OnHoverDrawer = () => {
             animation: `${fadeInFwd} 0.5 both`,
           }}
         >
+          <Typography variant="h3">{title}</Typography>
+          <Divider />
           {pages.map((page, i) => (
             <DrawerItem
               key={page}

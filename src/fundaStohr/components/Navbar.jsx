@@ -18,7 +18,12 @@ export const Navbar = () => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Link component={RouterLink} color="inherit" to="/inicio">
+            <Link
+              component={RouterLink}
+              color="inherit"
+              to="/inicio"
+              underline="none"
+            >
               <Typography
                 variant="h6"
                 noWrap

@@ -13,5 +13,11 @@ export const mainTheme = createTheme({
       main: red.A400,
     },
   },
-  components: {},
+  components: {
+    MuiTypography: {
+      defaultProps: {
+        fontFamily: "sans-serif",
+      },
+    },
+  },
 });

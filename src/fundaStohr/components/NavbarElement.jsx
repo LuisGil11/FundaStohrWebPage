@@ -28,8 +28,9 @@ export const NavbarElement = ({ pages, link, title }) => {
         pages &&
           dispatch(
             openDrawer({
-              pages: pages,
+              pages,
               father: link,
+              title,
             })
           );
       }}
@@ -48,29 +49,3 @@ export const NavbarElement = ({ pages, link, title }) => {
     </Button>
   );
 };
-
-<Button
-  variant="p"
-  component="div"
-  onMouseLeave={() => handleOnMouseLeave()}
-  onMouseOver={() =>
-    dispatch(
-      openDrawer({
-        pages: [1, 2],
-        father: "la-fundacion",
-      })
-    )
-  }
->
-  <Link
-    component={RouterLink}
-    color="inherit"
-    to="/la-fundacion"
-    underline="none"
-    sx={{
-      "&.active": { borderBottom: 3, borderColor: "white" },
-    }}
-  >
-    La Fundación
-  </Link>
-</Button>;
