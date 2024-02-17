@@ -1,16 +1,14 @@
 import {
   Divider,
   Drawer,
-  Fade,
   List,
   ListItem,
   Typography,
   keyframes,
-  styled,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { closeDrawer } from "../../store/slices/drawerSlice";
+import { closeDrawer, setClosing } from "../../store/slices/drawerSlice";
 import { NavLink } from "react-router-dom";
 
 export const DrawerItem = ({ page, father, total, index }) => {
@@ -25,8 +23,26 @@ export const DrawerItem = ({ page, father, total, index }) => {
 };
 
 export const OnHoverDrawer = () => {
-  const { toggle, father, pages = [] } = useSelector((state) => state.drawer);
+  const {
+    toggle,
+    father,
+    pages = [],
+    closing,
+  } = useSelector((state) => state.drawer);
   const dispatch = useDispatch();
+
+  const handleOnMouseLeave = () => {
+    dispatch(setClosing(true));
+    setTimeout(() => {
+      dispatch(closeDrawer());
+    }, 500);
+  };
+
+  useEffect(() => {
+    if (toggle) {
+      dispatch(setClosing(false));
+    }
+  }, [toggle]);
 
   const fadeInFwd = keyframes`
   0% {
@@ -38,6 +54,18 @@ export const OnHoverDrawer = () => {
     -webkit-transform: translateZ(0);
             transform: translateZ(0);
     opacity: 1;
+  }
+`;
+  const fadeOutBck = keyframes`
+  0% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateZ(-80px);
+            transform: translateZ(-80px);
+    opacity: 0;
   }
 `;
 
@@ -63,14 +91,24 @@ export const OnHoverDrawer = () => {
           width: "100%",
           marginTop: 8,
           textAlign: "left",
-          animation: `${fadeInFwd} 1s`,
+          animation: `${!closing ? fadeInFwd : fadeOutBck} 0.5s `,
+          visibility: !toggle && "hidden",
+          transitionDuration: 0,
         },
       }}
       anchor="top"
       open={toggle}
+      transitionDuration={0}
     >
-      <div onMouseLeave={() => dispatch(closeDrawer())}>
-        <List sx={{ marginLeft: 2 }}>
+      <div
+        onMouseLeave={() => handleOnMouseLeave()}
+        onMouseOver={() => dispatch(setClosing(false))}
+      >
+        <List
+          sx={{
+            marginLeft: 2,
+          }}
+        >
           {pages.map((page, i) => (
             <DrawerItem
               key={page}

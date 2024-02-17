@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   toggle: false,
+  closing: false,
   pages: [],
   father: "",
 };
@@ -12,16 +13,21 @@ export const drawerSlice = createSlice({
   reducers: {
     openDrawer: (state, action) => {
       state.toggle = true;
+      state.closing = false;
       state.pages = action.payload.pages;
       state.father = action.payload.father;
     },
     closeDrawer: (state) => {
-      console.log("sale");
-      state.toggle = false;
-      state.pages = [];
-      state.father = "";
+      if (state.closing) {
+        state.toggle = false;
+        state.pages = [];
+        state.father = "";
+      }
+    },
+    setClosing: (state, action) => {
+      state.closing = action.payload;
     },
   },
 });
 
-export const { openDrawer, closeDrawer } = drawerSlice.actions;
+export const { openDrawer, closeDrawer, setClosing } = drawerSlice.actions;
