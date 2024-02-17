@@ -84,7 +84,7 @@ export const OnHoverDrawer = () => {
       >
         <List
           sx={{
-            marginLeft: 2,
+            px: 2,
             animation: `${fadeInFwd} 0.5 both`,
           }}
         >
