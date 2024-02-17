@@ -1,33 +1,10 @@
-import {
-  AppBar,
-  Button,
-  Grid,
-  Link,
-  Stack,
-  Toolbar,
-  Typography,
-  keyframes,
-} from "@mui/material";
+import { AppBar, Grid, Link, Stack, Toolbar, Typography } from "@mui/material";
 import { NavLink as RouterLink } from "react-router-dom";
 import React from "react";
-import { useDispatch } from "react-redux";
-import {
-  closeDrawer,
-  openDrawer,
-  setClosing,
-} from "../../store/slices/drawerSlice";
+import { pagesInfo } from "../pages/pagesInfo";
+import { NavbarElement } from "./NavbarElement";
 
 export const Navbar = () => {
-  const dispatch = useDispatch();
-
-  const handleOnMouseLeave = () => {
-    console.log("se llamo el mouseLeave desde el navbar");
-    dispatch(setClosing(true));
-    setTimeout(() => {
-      dispatch(closeDrawer());
-    }, 500);
-  };
-
   const navBarHeight = 60;
 
   return (
@@ -41,12 +18,7 @@ export const Navbar = () => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Link
-              component={RouterLink}
-              color="inherit"
-              to="/inicio"
-              underline="none"
-            >
+            <Link component={RouterLink} color="inherit" to="/inicio">
               <Typography
                 variant="h6"
                 noWrap
@@ -62,108 +34,9 @@ export const Navbar = () => {
               gap={0.5}
               sx={{ height: navBarHeight + 1 }}
             >
-              {/* <Button variant="p" component="div" to="/la-fundacion">
-              La Fundación
-            </Button> */}
-
-              <Button
-                variant="p"
-                component="div"
-                onMouseLeave={() => handleOnMouseLeave()}
-                onMouseOver={() =>
-                  dispatch(
-                    openDrawer({
-                      pages: [1, 2],
-                      father: "la-fundacion",
-                    })
-                  )
-                }
-              >
-                <Link
-                  component={RouterLink}
-                  color="inherit"
-                  to="/la-fundacion"
-                  underline="none"
-                  sx={{
-                    "&.active": { borderBottom: 3, borderColor: "white" },
-                  }}
-                >
-                  La Fundación
-                </Link>
-              </Button>
-              <Button
-                variant="p"
-                component="div"
-                onMouseLeave={() => handleOnMouseLeave()}
-                onMouseOver={() =>
-                  dispatch(
-                    openDrawer({
-                      pages: [1.1, 2.1, 3.1, 4.1],
-                      father: "concursos",
-                    })
-                  )
-                }
-                onClick={() => handleOnMouseLeave()}
-              >
-                <Link
-                  component={RouterLink}
-                  color="inherit"
-                  to="/concursos"
-                  underline="none"
-                  sx={{ "&.active": { borderBottom: 3, borderColor: "white" } }}
-                >
-                  Concursos
-                </Link>
-              </Button>
-              <Button variant="p" component="div">
-                <Link
-                  component={RouterLink}
-                  color="inherit"
-                  to="/exposiciones"
-                  underline="none"
-                  sx={{ "&.active": { borderBottom: 3, borderColor: "white" } }}
-                >
-                  Exposiciones
-                </Link>
-              </Button>
-              <Button variant="p" component="div">
-                <Link
-                  component={RouterLink}
-                  color="inherit"
-                  to="/dibujando-en-armonia"
-                  underline="none"
-                  sx={{ "&.active": { borderBottom: 3, borderColor: "white" } }}
-                >
-                  Dibujando en Armonía
-                </Link>
-              </Button>
-              <Button variant="p" component="div">
-                <Link
-                  component={RouterLink}
-                  color="inherit"
-                  to="/apoyanos"
-                  underline="none"
-                  sx={{ "&.active": { borderBottom: 3, borderColor: "white" } }}
-                >
-                  Apóyanos
-                </Link>
-              </Button>
-              <Button variant="p" component="div">
-                <Link
-                  component={RouterLink}
-                  color="inherit"
-                  to="/contacto"
-                  underline="none"
-                  sx={{
-                    "&.active": {
-                      borderBottom: 3,
-                      borderColor: "white",
-                    },
-                  }}
-                >
-                  Contacto
-                </Link>
-              </Button>
+              {pagesInfo.map((page) => (
+                <NavbarElement {...page} key={page.link} />
+              ))}
             </Stack>
           </Grid>
         </Toolbar>
